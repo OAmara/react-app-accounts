@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
+import AccountList from '../AccountList'
 
 class AccountContainer extends Component {
 
@@ -33,7 +34,9 @@ class AccountContainer extends Component {
 	render() {
 		console.log('Current state in DogContainer: ', this.state);
 		return(
-			'AccountContainer'
+			<>
+				<AccountList accounts={this.state.accounts}/>
+			</>
 		)
 	}
 }

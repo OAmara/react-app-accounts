@@ -21,3 +21,5 @@ First Start by creating a react app:
 	-	https://react.semantic-ui.com/views/card/
 		install by running in console: 'npm install semantic-ui-react semantic-ui-css'
 
+	Create AccountList component, pass state into it with props and utilize props to display data onto component.
+
