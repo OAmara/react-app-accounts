@@ -94,7 +94,7 @@ class AccountContainer extends Component {
 	}
 
 	render() {
-		// console.log('Current state in DogContainer: ', this.state);
+		// console.log('Current state in AccountContainer: ', this.state);
 		return(
 			<>
 				<AccountList 
@@ -102,15 +102,14 @@ class AccountContainer extends Component {
 					deleteAccount={this.deleteAccount}
 					editAccount={this.editAccount}
 				/>
-				<NewAccountForm 
-					createAccount={this.createAccount} 
-				/>
 				{
 					this.state.idOfAccountToEdit !== -1
 					?
 					<EditAccountModal />
 					:
-					null
+					<NewAccountForm 
+						createAccount={this.createAccount} 
+					/>
 				}
 			</>
 		)
