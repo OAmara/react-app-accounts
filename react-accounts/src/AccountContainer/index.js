@@ -93,6 +93,11 @@ class AccountContainer extends Component {
 		})
 	}
 
+	updateAccount = (newAccountInfo) => {
+		// id of account is in state
+		console.log('id of account to update: ', this.state.idOfAccountToEdit, ", update to --> ", newAccountInfo);
+	}
+
 	render() {
 		// console.log('Current state in AccountContainer: ', this.state);
 		return(
@@ -107,6 +112,7 @@ class AccountContainer extends Component {
 					?
 					<EditAccountModal 
 						accountToEdit={this.state.accounts.find((account) => account.id === this.state.idOfAccountToEdit)}
+						updateAccount={this.updateAccount}
 					/>
 					:
 					<NewAccountForm 

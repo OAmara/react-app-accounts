@@ -27,6 +27,11 @@ class EditAccountModal extends Component {
 		})	
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault()
+		this.props.updateAccount(this.state)
+	}
+
 	render() {
 		// console.log('EditAccountModal props: ', this.props);
 		return(

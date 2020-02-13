@@ -27,5 +27,5 @@ First Start by creating a react app:
 
 	Create method in Container that will fetch to server JSON data body of form and will update page after submission.
 
-	
+	...Follow Commits...
 
