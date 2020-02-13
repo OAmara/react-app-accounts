@@ -12,6 +12,15 @@ class NewAccountForm extends Component {
 		}
 	}
 
+	// Allows us to change and record changes made in input forms
+	handleChange = (e) => {
+		this.setState({
+			// computed property name for any input name and value. 
+			// This enables us to not have to hard code each input name and value.
+			[e.target.name]: e.target.value
+		})	
+	}
+
 	render() {
 		return(
 			<Segment>
@@ -23,6 +32,7 @@ class NewAccountForm extends Component {
 						name="institution"
 						value={this.state.institution}
 						placeholder="Enter Affiliated Bank"
+						onChange={this.handleChange}
 					/>
 					<Label>Account Type:</Label>
 					<Form.Input
@@ -30,6 +40,7 @@ class NewAccountForm extends Component {
 						name="name"
 						value={this.state.name}
 						placeholder="Enter Account Type"
+						onChange={this.handleChange}
 					/>
 					<Label>Account Balance:</Label>
 					<Form.Input
@@ -37,7 +48,9 @@ class NewAccountForm extends Component {
 						name="balance"
 						value={this.state.balance}
 						placeholder="Current Balance"
+						onChange={this.handleChange}
 					/>
+					<Button color={'olive'} type="Submit">Create Account</Button>
 				</Form>
 			</Segment>
 		)
