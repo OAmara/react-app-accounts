@@ -13,7 +13,16 @@ class EditAccountModal extends Component {
 		}
 	}
 
+	componentDidMount() {
+		this.setState({
+			institution: this.props.accountToEdit.institution,
+			name: this.props.accountToEdit.name,
+			balance: this.props.accountToEdit.balance,
+		})
+	}
+
 	render() {
+		console.log('EditAccountModal props: ', this.props);
 		return(
 			<Segment>
 				<h3>Make Changes To Account</h3>

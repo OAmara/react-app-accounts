@@ -105,7 +105,9 @@ class AccountContainer extends Component {
 				{
 					this.state.idOfAccountToEdit !== -1
 					?
-					<EditAccountModal />
+					<EditAccountModal 
+						accountToEdit={this.state.accounts.find((account) => account.id === this.state.idOfAccountToEdit)}
+					/>
 					:
 					<NewAccountForm 
 						createAccount={this.createAccount} 
