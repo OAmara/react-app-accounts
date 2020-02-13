@@ -21,11 +21,21 @@ class NewAccountForm extends Component {
 		})	
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault()	
+		this.props.createAccount(this.state)
+		this.setState({
+			institution: '',
+			name: '',
+			balance: 0,
+		})
+	}
+
 	render() {
 		return(
 			<Segment>
 				<h4>Add New Account:</h4>
-				<Form>
+				<Form onSubmit={this.handleSubmit}>
 					<Label>Institution:</Label>
 					<Form.Input
 						type="text"

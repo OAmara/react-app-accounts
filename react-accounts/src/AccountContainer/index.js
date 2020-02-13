@@ -32,12 +32,20 @@ class AccountContainer extends Component {
 		}
 	}
 
+	createAccount = async (accountToAdd) => {
+		// console.log('Submitting Form on: ', accountToAdd);	
+	}
+
 	render() {
-		console.log('Current state in DogContainer: ', this.state);
+		// console.log('Current state in DogContainer: ', this.state);
 		return(
 			<>
-				<AccountList accounts={this.state.accounts}/>
-				<NewAccountForm />
+				<AccountList 
+					accounts={this.state.accounts} 
+				/>
+				<NewAccountForm 
+					createAccount={this.createAccount} 
+				/>
 			</>
 		)
 	}
