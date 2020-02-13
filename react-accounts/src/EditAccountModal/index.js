@@ -36,7 +36,7 @@ class EditAccountModal extends Component {
 		// console.log('EditAccountModal props: ', this.props);
 		return(
 			<Segment>
-				<h3>Make Changes To Account</h3>
+				<h3>Make Changes To Account for {this.state.institution}:</h3>
 				<Form onSubmit={this.handleSubmit}>
 					<Label>Change Institution:</Label>
 					<Form.Input
@@ -63,6 +63,7 @@ class EditAccountModal extends Component {
 						onChange={this.handleChange}
 					/>
 					<Button color={'olive'} type="Submit">Update Account</Button>
+					<Button color={'orange'} onClick={this.props.closeModal}>(Discard Changes)</Button>
 				</Form>
 			</Segment>
 		)

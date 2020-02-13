@@ -127,6 +127,13 @@ class AccountContainer extends Component {
 		} catch(err) {
 			console.error(err)
 		}
+		this.closeModal()
+	}
+
+	closeModal = () => {
+		this.setState({
+			idOfAccountToEdit: -1
+		})
 	}
 
 	render() {
@@ -144,6 +151,7 @@ class AccountContainer extends Component {
 					<EditAccountModal 
 						accountToEdit={this.state.accounts.find((account) => account.id === this.state.idOfAccountToEdit)}
 						updateAccount={this.updateAccount}
+						closeModal={this.closeModal}
 					/>
 					:
 					<NewAccountForm 
