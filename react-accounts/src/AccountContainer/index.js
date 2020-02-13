@@ -8,7 +8,8 @@ class AccountContainer extends Component {
 		super(props)
 
 		this.state = {
-			accounts: []
+			accounts: [],
+			idOfAccountToEdit: -1,
 		}
 	}
 
@@ -84,13 +85,18 @@ class AccountContainer extends Component {
 		}
 	}
 
+	editAccount = (idOfAccountToEdit) => {
+		console.log('id of Account to edit: ', idOfAccountToEdit);
+	}
+
 	render() {
 		// console.log('Current state in DogContainer: ', this.state);
 		return(
 			<>
 				<AccountList 
 					accounts={this.state.accounts}
-					deleteAccount={this.deleteAccount} 
+					deleteAccount={this.deleteAccount}
+					editAccount={this.editAccount}
 				/>
 				<NewAccountForm 
 					createAccount={this.createAccount} 

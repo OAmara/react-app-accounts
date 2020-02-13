@@ -18,6 +18,7 @@ function AccountList(props) {
 				</Card.Content>
 				<Card.Content extra>
 					<Button onClick={() => props.deleteAccount(account.id)}>Delete Account</Button>
+					<Button onClick={() => props.editAccount(account.id)}>Edit Account</Button>
 				</Card.Content>
 			</Card>
 
