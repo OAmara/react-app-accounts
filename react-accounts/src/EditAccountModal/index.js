@@ -21,8 +21,14 @@ class EditAccountModal extends Component {
 		})
 	}
 
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})	
+	}
+
 	render() {
-		console.log('EditAccountModal props: ', this.props);
+		// console.log('EditAccountModal props: ', this.props);
 		return(
 			<Segment>
 				<h3>Make Changes To Account</h3>
