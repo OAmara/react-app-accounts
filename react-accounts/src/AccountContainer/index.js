@@ -33,7 +33,32 @@ class AccountContainer extends Component {
 	}
 
 	createAccount = async (accountToAdd) => {
-		// console.log('Submitting Form on: ', accountToAdd);	
+		// console.log('Submitting Form on: ', accountToAdd);
+		try {
+			// follow: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+		const createAccountResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/', 
+			{
+				method: 'POST',
+				body: JSON.stringify(accountToAdd), // converts object to JSON
+				headers: {
+					'Content-Type': 'application/json'
+			}
+		})
+		const createAccountJson = await createAccountResponse.json()
+		console.log('createAccount method: ', createAccountJson);
+
+		// this will reload component without having to run another fetch call. Save query time and data!
+		// this will also confirm POST successfully to DB
+		if(createAccountResponse.status === 201) {
+			this.setState({
+				//spread operator
+				accounts: [...this.state.accounts, createAccountJson.data]
+			})
+		}
+
+		} catch(err) {
+			console.error(err)
+		}
 	}
 
 	render() {
