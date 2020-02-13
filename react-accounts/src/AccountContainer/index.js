@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AccountList from '../AccountList'
 import NewAccountForm from '../NewAccountForm'
+import EditAccountModal from '../EditAccountModal'
 
 class AccountContainer extends Component {
 
@@ -87,6 +88,9 @@ class AccountContainer extends Component {
 
 	editAccount = (idOfAccountToEdit) => {
 		console.log('id of Account to edit: ', idOfAccountToEdit);
+		this.setState({
+			idOfAccountToEdit: idOfAccountToEdit
+		})
 	}
 
 	render() {
@@ -101,6 +105,13 @@ class AccountContainer extends Component {
 				<NewAccountForm 
 					createAccount={this.createAccount} 
 				/>
+				{
+					this.state.idOfAccountToEdit !== -1
+					?
+					<EditAccountModal />
+					:
+					null
+				}
 			</>
 		)
 	}
