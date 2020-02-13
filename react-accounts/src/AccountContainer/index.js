@@ -93,9 +93,40 @@ class AccountContainer extends Component {
 		})
 	}
 
-	updateAccount = (newAccountInfo) => {
+	updateAccount = async (newAccountInfo) => {
 		// id of account is in state
-		console.log('id of account to update: ', this.state.idOfAccountToEdit, ", update to --> ", newAccountInfo);
+		// console.log('id of account to update: ', this.state.idOfAccountToEdit, ", update to --> ", newAccountInfo);
+		try {
+			const updateAccountResponse = await fetch(
+				process.env.REACT_APP_API_URL + '/api/v1/accounts/' + this.state.idOfAccountToEdit,
+				{
+					method: 'PUT',
+					body: JSON.stringify(newAccountInfo),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}
+			)
+			console.log('updateAccount fetch response: ', updateAccountResponse);
+			const updateAccountJson = await updateAccountResponse.json();
+			console.log('update data: ', updateAccountJson);
+
+			if(updateAccountResponse.status === 200) {
+				const updatedAccountsArray = this.state.accounts.map((account) => {
+					if(account.id === this.state.idOfAccountToEdit) {
+						return updateAccountJson.data
+					} else {
+						return account
+					}
+				})
+
+				this.setState({
+					accounts: updatedAccountsArray
+				})
+			}
+		} catch(err) {
+			console.error(err)
+		}
 	}
 
 	render() {
