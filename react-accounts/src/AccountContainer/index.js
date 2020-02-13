@@ -47,7 +47,7 @@ class AccountContainer extends Component {
 			}
 		})
 		const createAccountJson = await createAccountResponse.json()
-		console.log('createAccount method: ', createAccountJson);
+		// console.log('createAccount method: ', createAccountJson);
 
 		// this will reload component without having to run another fetch call. Save query time and data!
 		// this will also confirm POST successfully to DB
@@ -64,14 +64,14 @@ class AccountContainer extends Component {
 	}
 
 	deleteAccount = async (id) => {
-		console.log('Attempting deletion of account#: ', id);
+		// console.log('Attempting deletion of account#: ', id);
 		try {
 			const deleteAccountResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/' + id, 
 				{
 					method: 'DELETE'
 			})
 			const deleteAccountJson = await deleteAccountResponse.json();
-			console.log('Response from trying to delete account: ', deleteAccountJson);
+			// console.log('Response from trying to delete account: ', deleteAccountJson);
 
 			if(deleteAccountJson.status === 200) {
 				this.setState({
@@ -84,10 +84,11 @@ class AccountContainer extends Component {
 		} catch(err) {
 			console.error(err)
 		}
+		this.closeModal()
 	}
 
 	editAccount = (idOfAccountToEdit) => {
-		console.log('id of Account to edit: ', idOfAccountToEdit);
+		// console.log('id of Account to edit: ', idOfAccountToEdit);
 		this.setState({
 			idOfAccountToEdit: idOfAccountToEdit
 		})
@@ -107,9 +108,9 @@ class AccountContainer extends Component {
 					}
 				}
 			)
-			console.log('updateAccount fetch response: ', updateAccountResponse);
+			// console.log('updateAccount fetch response: ', updateAccountResponse);
 			const updateAccountJson = await updateAccountResponse.json();
-			console.log('update data: ', updateAccountJson);
+			// console.log('update data: ', updateAccountJson);
 
 			if(updateAccountResponse.status === 200) {
 				const updatedAccountsArray = this.state.accounts.map((account) => {

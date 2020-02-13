@@ -34,9 +34,11 @@ class EditAccountModal extends Component {
 
 	render() {
 		// console.log('EditAccountModal props: ', this.props);
+		// use following console.log to confirm balance returns as a number
+		// console.log(this.state);
 		return(
 			<Segment>
-				<h3>Make Changes To Account for {this.state.institution}:</h3>
+				<h3>Make Changes to {this.state.institution} Account:</h3>
 				<Form onSubmit={this.handleSubmit}>
 					<Label>Change Institution:</Label>
 					<Form.Input

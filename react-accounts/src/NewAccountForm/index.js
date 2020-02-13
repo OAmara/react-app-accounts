@@ -17,6 +17,7 @@ class NewAccountForm extends Component {
 		this.setState({
 			// computed property name for any input name and value. 
 			// This enables us to not have to hard code each input name and value.
+			// Why does e.target.value not need to be converted to Integer for name 'balance'?
 			[e.target.name]: e.target.value
 		})	
 	}
