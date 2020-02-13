@@ -23,5 +23,5 @@ First Start by creating a react app:
 
 	Create AccountList component, pass state into it with props and utilize props to display data onto component.
 
-	
+	Create component that holds form for creating new accounts. Form should have same properties as seen in JSON data. Import into AccountContainer, component holding overall state. 
 

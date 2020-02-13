@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AccountList from '../AccountList'
+import NewAccountForm from '../NewAccountForm'
 
 class AccountContainer extends Component {
 
@@ -36,6 +37,7 @@ class AccountContainer extends Component {
 		return(
 			<>
 				<AccountList accounts={this.state.accounts}/>
+				<NewAccountForm />
 			</>
 		)
 	}
