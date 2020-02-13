@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 function AccountList(props) {
 
@@ -15,6 +15,9 @@ function AccountList(props) {
 					<Card.Description>
 						{account.name.toUpperCase()} account from {account.institution} holds: ${account.balance}.
 					</Card.Description>
+				</Card.Content>
+				<Card.Content extra>
+					<Button onClick={() => props.deleteAccount(account.id)}>Delete Account</Button>
 				</Card.Content>
 			</Card>
 

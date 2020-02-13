@@ -25,3 +25,7 @@ First Start by creating a react app:
 
 	Create component that holds form for creating new accounts. Form should have same properties as seen in JSON data. Import into AccountContainer, component holding overall state. 
 
+	Create method in Container that will fetch to server JSON data body of form and will update page after submission.
+
+	
+

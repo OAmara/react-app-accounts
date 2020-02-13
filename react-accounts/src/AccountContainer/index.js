@@ -61,12 +61,36 @@ class AccountContainer extends Component {
 		}
 	}
 
+	deleteAccount = async (id) => {
+		console.log('Attempting deletion of account#: ', id);
+		try {
+			const deleteAccountResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/' + id, 
+				{
+					method: 'DELETE'
+			})
+			const deleteAccountJson = await deleteAccountResponse.json();
+			console.log('Response from trying to delete account: ', deleteAccountJson);
+
+			if(deleteAccountJson.status === 200) {
+				this.setState({
+					accounts: this.state.accounts.filter(account => account.id !== id)
+				})
+			} else {
+				throw new Error('Could not Delete Account')
+			}
+
+		} catch(err) {
+			console.error(err)
+		}
+	}
+
 	render() {
 		// console.log('Current state in DogContainer: ', this.state);
 		return(
 			<>
 				<AccountList 
-					accounts={this.state.accounts} 
+					accounts={this.state.accounts}
+					deleteAccount={this.deleteAccount} 
 				/>
 				<NewAccountForm 
 					createAccount={this.createAccount} 
