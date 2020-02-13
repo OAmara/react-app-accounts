@@ -20,13 +20,18 @@ class AccountContainer extends Component {
 		try {
 			const accountsResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/')
 			const accountsJson = await accountsResponse.json()
-			console.log('Data from getAccounts: ', accountsJson);
+			// drill down into object result from API to determine what needs to be placed in state
+			// console.log('Data from getAccounts: ', accountsJson);
+			this.setState({
+				accounts: accountsJson.data
+			})
 		} catch(err) {
 			console.error(err);
 		}
 	}
 
 	render() {
+		console.log('Current state in DogContainer: ', this.state);
 		return(
 			'AccountContainer'
 		)

@@ -19,6 +19,5 @@ First Start by creating a react app:
 
 	SEMANTIC UI -- fun library of Graphical UI components that are very easy to use and customize...fun stuff
 	-	https://react.semantic-ui.com/views/card/
-		install by running in console: 'npm install semantic-ui-react'
+		install by running in console: 'npm install semantic-ui-react semantic-ui-css'
 
-	
