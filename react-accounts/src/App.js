@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import AccountContainer from './AccountContainer'
+import LoginRegisterForm from './LoginRegisterForm'
 
-function App() {
+class App extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			loggedIn: false,
+			loggedInUserEmail: null // useful to track email or username to possibly display "logged in as ...@....com"...
+		}
+	}
 
-  return (
-    <div className="App">
-      <AccountContainer />
-    </div>
-  );
+	render() {
+	  	return (
+		    <div className="App">
+		    	{ this.state.loggedIn ? <AccountContainer /> : <LoginRegisterForm /> }
+		    </div>
+	  	);
+	}
 }
 
 export default App;
