@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Form, Button, Label, Header, Modal } from 'semantic-ui-react'
 // modal options
 // https://react.semantic-ui.com/modules/modal/
 
 function EditAccountModal(props) {
-		console.log(props);
+		// console.log(props);
 
 		return(
 			<Modal open={props.open} closeIcon={true} onClose={props.closeModal}>

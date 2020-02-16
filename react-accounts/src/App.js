@@ -13,7 +13,7 @@ class App extends Component {
 	}
 
 	register = async (registerInfo) => {
-		console.log('register() in App.js called with info: ', registerInfo);
+		// console.log('register() in App.js called with info: ', registerInfo);
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
 
 		try {
@@ -28,18 +28,18 @@ class App extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(registerResponse);
+			// console.log(registerResponse);
 			const registerJson = await registerResponse.json()
-			console.log(registerJson);
+			// console.log(registerJson);
 		} catch(err) {
 			if(err) {
-				console.log(err);
+				 console.log(err);
 			}
 		}
 	}
 
 	login = async (loginInfo) => {
-		console.log('login() in App.js info: ', loginInfo);
+		// console.log('login() in App.js info: ', loginInfo);
 		const url = process.env.REACT_APP_API_URL + '/api/v1/users/login'
 
 		try {
@@ -51,9 +51,9 @@ class App extends Component {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log(loginResponse);
+			// console.log(loginResponse);
 			const loginJson = await loginResponse.json()
-			console.log(loginJson);
+			// console.log(loginJson);
 
 			// 'login' user and switch component to AccountContainer
 			if(loginResponse.status === 200) {
@@ -65,7 +65,7 @@ class App extends Component {
 
 		} catch (err) {
 			if(err) {
-				console.log(err);
+				 console.log(err);
 			}
 		}
 	}
