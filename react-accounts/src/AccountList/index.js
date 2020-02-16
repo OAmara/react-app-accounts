@@ -9,9 +9,6 @@ function AccountList(props) {
 		return(
 			<Card key={account.id} centered={true} color={color}>
 				<Card.Content>
-					<Card.Header>
-						{account.institution}
-					</Card.Header>
 					<Card.Description>
 						{account.name.toUpperCase()} account holds: ${account.balance}.
 					</Card.Description>
