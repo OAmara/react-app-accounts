@@ -6,7 +6,6 @@ class NewAccountForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			institution: '',
 			name: '',
 			balance: 0,
 		}
@@ -26,7 +25,6 @@ class NewAccountForm extends Component {
 		e.preventDefault()	
 		this.props.createAccount(this.state)
 		this.setState({
-			institution: '',
 			name: '',
 			balance: 0,
 		})
@@ -37,14 +35,6 @@ class NewAccountForm extends Component {
 			<Segment>
 				<h4>Add New Account:</h4>
 				<Form onSubmit={this.handleSubmit}>
-					<Label>Institution:</Label>
-					<Form.Input
-						type="text"
-						name="institution"
-						value={this.state.institution}
-						placeholder="Enter Affiliated Bank"
-						onChange={this.handleChange}
-					/>
 					<Label>Account Type:</Label>
 					<Form.Input
 						type="text"

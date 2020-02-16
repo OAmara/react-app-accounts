@@ -13,7 +13,7 @@ function AccountList(props) {
 						{account.institution}
 					</Card.Header>
 					<Card.Description>
-						{account.name.toUpperCase()} account from {account.institution} holds: ${account.balance}.
+						{account.name.toUpperCase()} account holds: ${account.balance}.
 					</Card.Description>
 				</Card.Content>
 				<Card.Content extra>

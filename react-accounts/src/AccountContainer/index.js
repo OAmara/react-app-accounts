@@ -28,7 +28,10 @@ class AccountContainer extends Component {
 
 	getAccounts = async () => {
 		try {
-			const accountsResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/')
+			const accountsResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/', {
+				// cookie must be sent every time for back end to know user is logged in
+				credentials: 'include'
+			})
 			const accountsJson = await accountsResponse.json()
 			// drill down into object result from API to determine what needs to be placed in state
 			// console.log('Data from getAccounts: ', accountsJson);
@@ -48,6 +51,7 @@ class AccountContainer extends Component {
 			{
 				method: 'POST',
 				body: JSON.stringify(accountToAdd), // converts object to JSON
+				credentials: 'include',
 				headers: {
 					'Content-Type': 'application/json'
 			}
@@ -74,7 +78,8 @@ class AccountContainer extends Component {
 		try {
 			const deleteAccountResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/accounts/' + id, 
 				{
-					method: 'DELETE'
+					method: 'DELETE',
+					credentials: 'include'
 			})
 			const deleteAccountJson = await deleteAccountResponse.json();
 			// console.log('Response from trying to delete account: ', deleteAccountJson);
@@ -132,6 +137,7 @@ class AccountContainer extends Component {
 				{
 					method: 'PUT',
 					body: JSON.stringify(this.state.accountToEdit),
+					credentials: 'include',
 					headers: {
 						'Content-Type': 'application/json'
 					}
