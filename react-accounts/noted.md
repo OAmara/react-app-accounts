@@ -26,3 +26,17 @@ install in flask server: pip3 install flask_cors (dont forget to pip freeze > re
 
 SEMANTIC UI -- fun library of Graphical UI components that are very easy to use and customize...fun stuff
 	-	https://react.semantic-ui.com/views/card/
+
+To install it, 
+
+`npm install semantic-ui-css semantic-ui-react`
+
+Then `index.js`
+Add this line
+```js
+import 'semantic-ui-css/semantic.min.css'
+````
+before this line
+```js
+import './index.css';
+```

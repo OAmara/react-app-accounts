@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Segment, Form, Button, Label} from 'semantic-ui-react'
+import { Form, Button, Label, Header, Modal } from 'semantic-ui-react'
+// modal options
+// https://react.semantic-ui.com/modules/modal/
 
 class EditAccountModal extends Component {
 
@@ -37,37 +39,33 @@ class EditAccountModal extends Component {
 		// use following console.log to confirm balance returns as a number
 		// console.log(this.state);
 		return(
-			<Segment>
-				<h3>Make Changes to {this.state.institution} Account:</h3>
-				<Form onSubmit={this.handleSubmit}>
-					<Label>Change Institution:</Label>
-					<Form.Input
-						type="text"
-						name="institution"
-						value={this.state.institution}
-						placeholder="Transfer To Bank"
-						onChange={this.handleChange}
-					/>
-					<Label>Change Account Type:</Label>
-					<Form.Input
-						type="text"
-						name="name"
-						value={this.state.name}
-						placeholder="Change Account Type"
-						onChange={this.handleChange}
-					/>
-					<Label>Change Account Balance:</Label>
-					<Form.Input
-						type="number"
-						name="balance"
-						value={this.state.balance}
-						placeholder="Change Balance"
-						onChange={this.handleChange}
-					/>
-					<Button color={'olive'} type="Submit">Update Account</Button>
-					<Button color={'orange'} onClick={this.props.closeModal}>(Discard Changes)</Button>
-				</Form>
-			</Segment>
+			<Modal open={true}>
+				<Header>Make Changes to {this.state.name} Account:</Header>
+				<Modal.Content>
+					<Form onSubmit={this.handleSubmit}>
+						<Label>Change Account Name:</Label>
+						<Form.Input
+							type="text"
+							name="name"
+							value={this.state.name}
+							placeholder="Change Account Type"
+							onChange={this.handleChange}
+						/>
+						<Label>Change Account Balance:</Label>
+						<Form.Input
+							type="number"
+							name="balance"
+							value={this.state.balance}
+							placeholder="Change Balance"
+							onChange={this.handleChange}
+						/>
+						<Modal.Actions>
+							<Button color={'olive'} type="Submit">Update Account</Button>
+							<Button color={'orange'} onClick={this.props.closeModal}>(Discard Changes)</Button>
+						</Modal.Actions>
+					</Form>
+				</Modal.Content>
+			</Modal>
 		)
 	}
 }
