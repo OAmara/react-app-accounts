@@ -26,11 +26,21 @@ class LoginRegisterForm extends Component {
 		})	
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault()
+
+	}
+
 	render() {
+		// implementation notes:
+			// Add form validation code
+			// highlight blank fields in red
+			// show erre message below them such as username required...
+			// Use Regexp to impose requirements on password
 		return(
 			<div className="LoginRegisterForm">
 				<h2 className='LoginRegisterForm-h2'>{this.state.action + ' here'}</h2>
-				<Form>
+				<Form onSubmit={this.handleSubmit}>
 					{
 						// username should only show when registering
 						this.state.action === 'register'
