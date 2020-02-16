@@ -10,7 +10,13 @@ class AccountContainer extends Component {
 
 		this.state = {
 			accounts: [],
-			idOfAccountToEdit: -1,
+			editModalOpen: false,
+			// data editing with form modal
+			accountToEdit: {
+				name: '',
+				balance: 0,
+				id: '',
+			}
 		}
 	}
 
@@ -89,8 +95,13 @@ class AccountContainer extends Component {
 
 	editAccount = (idOfAccountToEdit) => {
 		// console.log('id of Account to edit: ', idOfAccountToEdit);
+		const accountToEdit = this.state.accounts.find((account) => account.id === idOfAccountToEdit)
 		this.setState({
-			idOfAccountToEdit: idOfAccountToEdit
+			editModalOpen: true,
+			accountToEdit: {
+				// spread operator representing form fields being edited
+				...accountToEdit
+			}
 		})
 	}
 
@@ -133,7 +144,7 @@ class AccountContainer extends Component {
 
 	closeModal = () => {
 		this.setState({
-			idOfAccountToEdit: -1
+			editModalOpen: false
 		})
 	}
 
@@ -146,19 +157,15 @@ class AccountContainer extends Component {
 					deleteAccount={this.deleteAccount}
 					editAccount={this.editAccount}
 				/>
-				{
-					this.state.idOfAccountToEdit !== -1
-					?
-					<EditAccountModal 
-						accountToEdit={this.state.accounts.find((account) => account.id === this.state.idOfAccountToEdit)}
-						updateAccount={this.updateAccount}
-						closeModal={this.closeModal}
-					/>
-					:
-					<NewAccountForm 
-						createAccount={this.createAccount} 
-					/>
-				}
+				<EditAccountModal 
+					open={this.state.editModalOpen}
+					accountToEdit={this.state.accountToEdit}
+					updateAccount={this.updateAccount}
+					closeModal={this.closeModal}
+				/>
+				<NewAccountForm 
+					createAccount={this.createAccount} 
+				/>
 			</>
 		)
 	}

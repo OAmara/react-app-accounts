@@ -39,7 +39,7 @@ class EditAccountModal extends Component {
 		// use following console.log to confirm balance returns as a number
 		// console.log(this.state);
 		return(
-			<Modal open={true}>
+			<Modal open={true} cloeIcon={true} onClose={(e) => (this.props.closeModal))}>
 				<Header>Make Changes to {this.state.name} Account:</Header>
 				<Modal.Content>
 					<Form onSubmit={this.handleSubmit}>
