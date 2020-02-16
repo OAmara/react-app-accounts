@@ -12,10 +12,24 @@ class App extends Component {
 		}
 	}
 
+	register = async (registerInfo) => {
+			
+	}
+
+	login = (loginInfo) => {
+			
+	}
+
 	render() {
 	  	return (
 		    <div className="App">
-		    	{ this.state.loggedIn ? <AccountContainer /> : <LoginRegisterForm /> }
+		    	{ 
+			    	this.state.loggedIn 
+			    	? 
+			    	<AccountContainer /> 
+			    	: 
+			    	<LoginRegisterForm /> 
+		   		}
 		    </div>
 	  	);
 	}

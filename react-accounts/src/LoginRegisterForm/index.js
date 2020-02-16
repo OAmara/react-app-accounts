@@ -26,9 +26,18 @@ class LoginRegisterForm extends Component {
 		})	
 	}
 
+	// seperation of concerns
 	handleSubmit = (e) => {
 		e.preventDefault()
+		this.loginRegister()
+	}
 
+	loginRegister = () => {
+		if(this.state.action == 'register') {
+			this.props.register(this.state)
+		} else {
+			this.props.login(this.state)
+		}
 	}
 
 	render() {
