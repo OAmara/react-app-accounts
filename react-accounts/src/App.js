@@ -13,7 +13,29 @@ class App extends Component {
 	}
 
 	register = async (registerInfo) => {
-			
+		console.log('register() in App.js called with info: ', registerInfo);
+		const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
+
+		try {
+			const registerResponse = await fetch(url, {
+				// INCLUDE--> credentials: 'include' IN EVERY FETCH CALL
+				// this will send cookie with fetch, will not be authorized without sending to api server.
+				// this is done automatically with express servers, but not with flask.
+				credentials: 'include', // sends cookie
+				method: 'POST',
+				body: JSON.stringify(registerInfo),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(registerResponse);
+			const registerJson = await registerResponse.json()
+			console.log(registerJson);
+		} catch(err) {
+			if(err) {
+				console.log(err);
+			}
+		}
 	}
 
 	login = (loginInfo) => {
@@ -28,7 +50,10 @@ class App extends Component {
 			    	? 
 			    	<AccountContainer /> 
 			    	: 
-			    	<LoginRegisterForm /> 
+			    	<LoginRegisterForm 
+			    		register={this.register}
+			    		login={this.login}
+			    	/> 
 		   		}
 		    </div>
 	  	);

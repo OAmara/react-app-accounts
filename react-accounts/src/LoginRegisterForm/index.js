@@ -33,7 +33,7 @@ class LoginRegisterForm extends Component {
 	}
 
 	loginRegister = () => {
-		if(this.state.action == 'register') {
+		if(this.state.action === 'register') {
 			this.props.register(this.state)
 		} else {
 			this.props.login(this.state)
