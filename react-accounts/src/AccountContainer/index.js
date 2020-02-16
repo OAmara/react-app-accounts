@@ -105,15 +105,33 @@ class AccountContainer extends Component {
 		})
 	}
 
+	handleEditChange = (e) => {
+		// const account = this.state.accountToEdit
+		// [e.target.name]: e.target.value
+		// this.setState({ accountToEdit: account })
+		// ^^ use above, or do something simpler!
+		this.setState({
+			accountToEdit: {
+				// spread operator
+				...this.state.accountToEdit, // copies all properties from object in state
+				[e.target.name]: e.target.value // replaces old value in spread operator with what is being edited here
+			}
+		})	
+	}
+
+	handleSubmitEditForm = (e) => {
+		e.preventDefault()
+		this.updateAccount()
+	}
+
 	updateAccount = async (newAccountInfo) => {
 		// id of account is in state
-		// console.log('id of account to update: ', this.state.idOfAccountToEdit, ", update to --> ", newAccountInfo);
 		try {
 			const updateAccountResponse = await fetch(
-				process.env.REACT_APP_API_URL + '/api/v1/accounts/' + this.state.idOfAccountToEdit,
+				process.env.REACT_APP_API_URL + '/api/v1/accounts/' + this.state.accountToEdit.id,
 				{
 					method: 'PUT',
-					body: JSON.stringify(newAccountInfo),
+					body: JSON.stringify(this.state.accountToEdit),
 					headers: {
 						'Content-Type': 'application/json'
 					}
@@ -125,7 +143,7 @@ class AccountContainer extends Component {
 
 			if(updateAccountResponse.status === 200) {
 				const updatedAccountsArray = this.state.accounts.map((account) => {
-					if(account.id === this.state.idOfAccountToEdit) {
+					if(account.id === updateAccountJson.data.id) {
 						return updateAccountJson.data
 					} else {
 						return account
@@ -162,6 +180,8 @@ class AccountContainer extends Component {
 					accountToEdit={this.state.accountToEdit}
 					updateAccount={this.updateAccount}
 					closeModal={this.closeModal}
+					handleEditChange={this.handleEditChange}
+					handleSubmitEditForm={this.handleSubmitEditForm}
 				/>
 				<NewAccountForm 
 					createAccount={this.createAccount} 

@@ -3,71 +3,41 @@ import { Form, Button, Label, Header, Modal } from 'semantic-ui-react'
 // modal options
 // https://react.semantic-ui.com/modules/modal/
 
-class EditAccountModal extends Component {
+function EditAccountModal(props) {
+		console.log(props);
 
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			institution: '',
-			name: '',
-			balance: 0,
-		}
-	}
-
-	componentDidMount() {
-		this.setState({
-			institution: this.props.accountToEdit.institution,
-			name: this.props.accountToEdit.name,
-			balance: this.props.accountToEdit.balance,
-		})
-	}
-
-	handleChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		})	
-	}
-
-	handleSubmit = (e) => {
-		e.preventDefault()
-		this.props.updateAccount(this.state)
-	}
-
-	render() {
-		// console.log('EditAccountModal props: ', this.props);
-		// use following console.log to confirm balance returns as a number
-		// console.log(this.state);
 		return(
-			<Modal open={true} cloeIcon={true} onClose={(e) => (this.props.closeModal))}>
-				<Header>Make Changes to {this.state.name} Account:</Header>
+			<Modal open={props.open} closeIcon={true} onClose={props.closeModal}>
+				<Header>Make Changes to {props.name} Account:</Header>
 				<Modal.Content>
-					<Form onSubmit={this.handleSubmit}>
+					<Form onSubmit={props.handleSubmitEditForm}>
 						<Label>Change Account Name:</Label>
 						<Form.Input
 							type="text"
 							name="name"
-							value={this.state.name}
+							value={props.accountToEdit.name}
 							placeholder="Change Account Type"
-							onChange={this.handleChange}
+							onChange={props.handleEditChange}
 						/>
 						<Label>Change Account Balance:</Label>
 						<Form.Input
 							type="number"
 							name="balance"
-							value={this.state.balance}
+							value={props.accountToEdit.balance}
 							placeholder="Change Balance"
-							onChange={this.handleChange}
+							onChange={props.handleEditChange}
 						/>
 						<Modal.Actions>
 							<Button color={'olive'} type="Submit">Update Account</Button>
-							<Button color={'orange'} onClick={this.props.closeModal}>(Discard Changes)</Button>
+							{
+								// Note: may have to delete button below since semantic modal will handle cancellation.
+							}
+							<Button color={'orange'} onClick={props.closeModal}>(Discard Changes)</Button>
 						</Modal.Actions>
 					</Form>
 				</Modal.Content>
 			</Modal>
 		)
-	}
 }
 
 export default EditAccountModal
