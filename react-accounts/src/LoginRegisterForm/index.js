@@ -77,7 +77,7 @@ class LoginRegisterForm extends Component {
 					/>
 					<Label>Password:</Label>
 					<Form.Input
-						type='text'
+						type='password'
 						name='password'
 						placeholder='Enter Password'
 						value={this.state.password}

@@ -54,6 +54,15 @@ class App extends Component {
 			console.log(loginResponse);
 			const loginJson = await loginResponse.json()
 			console.log(loginJson);
+
+			// 'login' user and switch component to AccountContainer
+			if(loginResponse.status === 200) {
+				this.setState({
+					loggedIn: true,
+					loggedInUserEmail: loginJson.data.email // helpful UI info
+				})
+			}
+
 		} catch (err) {
 			if(err) {
 				console.log(err);
