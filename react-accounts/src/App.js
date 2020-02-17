@@ -31,6 +31,14 @@ class App extends Component {
 			// console.log(registerResponse);
 			const registerJson = await registerResponse.json()
 			// console.log(registerJson);
+
+			if(registerResponse.status === 201) {
+				this.setState({
+					loggedIn: true,
+					loggedInUserEmail: registerJson.data.email // helpful UI info
+				})
+			}
+
 		} catch(err) {
 			if(err) {
 				 console.log(err);
@@ -65,7 +73,30 @@ class App extends Component {
 
 		} catch (err) {
 			if(err) {
-				 console.log(err);
+				 console.error(err);
+			}
+		}
+	}
+
+	logout = async () => {
+		const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
+
+		try {
+		const logoutResponse = await fetch(url, {
+			credentials: 'include'
+		})
+		const logoutJson = await logoutResponse.json()
+
+		if(logoutResponse.status === 200) {
+			this.setState({
+				loggedIn: false,
+				loggedInUserEmail: null
+			})
+		}
+		
+		} catch(err) {
+			if(err) {
+				console.error(err)
 			}
 		}
 	}
@@ -76,7 +107,7 @@ class App extends Component {
 		    	{ 
 			    	this.state.loggedIn 
 			    	? 
-			    	<AccountContainer /> 
+			    	<AccountContainer logout={this.logout}/> 
 			    	: 
 			    	<LoginRegisterForm 
 			    		register={this.register}

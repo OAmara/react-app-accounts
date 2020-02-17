@@ -192,6 +192,7 @@ class AccountContainer extends Component {
 				<NewAccountForm 
 					createAccount={this.createAccount} 
 				/>
+				<button onClick={this.props.logout}>Logout</button>
 			</>
 		)
 	}
